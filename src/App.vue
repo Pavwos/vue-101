@@ -67,6 +67,7 @@ export default {
       }
       if(this.count > this.max){
         this.count = this.max
+        this.min = this.max
       }
     }
 	},
