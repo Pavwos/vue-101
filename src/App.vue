@@ -4,11 +4,11 @@
       <p>Mínimo</p>
       <div id="min">
         <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="min">
-        <button :disabled="count <= min" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="decrement">-</button>
+        <button :disabled="count <= min || min > max" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="decrement">-</button>
       </div>
       <h1 class="text-2xl">Valor: {{ count }}</h1>
       <div id="max">
-        <button :disabled="count >= max" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="increment">+</button>
+        <button :disabled="count >= max || min > max" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="increment">+</button>
         <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="max">
       </div>
       <p>Máximo</p>
@@ -33,6 +33,10 @@ export default {
         this.count += this.value
         if(this.count > this.max){
           this.count = this.max;
+        }
+        if(this.max < this.min){
+          alert('the max value must be higher than the min value, change it')
+
         }
       } 
     },
