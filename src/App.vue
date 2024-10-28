@@ -3,8 +3,8 @@
     <div id="button" class="flex items-center justify-center flex-row gap-6">
       <p>Mínimo</p>
       <div id="min">
-        <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="min">
-        <button :disabled="count <= min || min > max" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="decrement">-</button>
+        <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="min" :disabled="min >= max">
+        <button :disabled="count <= min" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="decrement">-</button>
       </div>
       <h1 class="text-2xl">Valor: {{ count }}</h1>
       <div id="max">
