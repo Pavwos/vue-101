@@ -1,11 +1,19 @@
 <template>
   <div id="app" class="h-screen flex items-center justify-center flex-col gap-6">
     <div id="button" class="flex items-center justify-center flex-row gap-6">
-      <button :disabled="count <= 0" class="disabled:cursor-not-allowed disabled:opacity-70 bg-green-600 p-5 w-16" @click="decrement">-</button>
+      <p>Mínimo</p>
+      <div id="min">
+        <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="min">
+        <button :disabled="count <= min" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="decrement">-</button>
+      </div>
       <h1 class="text-2xl">Valor: {{ count }}</h1>
-      <button :disabled="count >= 10" class="disabled:cursor-not-allowed disabled:opacity-70 bg-green-600 p-5 w-16" @click="increment">+</button>
+      <div id="max">
+        <button :disabled="count >= max" class="disabled:cursor-not-allowed disabled:opacity-70 border-2 border-black bg-green-600 p-5 w-16 rounded-md hover:opacity-90 transition-all" @click="increment">+</button>
+        <input type="number" class="m-2 w-10 border-2 border-black" v-model.number="max">
+      </div>
+      <p>Máximo</p>
     </div>
-    <input type="number" placeholder="Add value..." class="outline-none border-b-neutral-800" v-model.number.lazy="value">
+    <input type="number" placeholder="Add value..." class="m-2 w-16 border-2 border-black" v-model.number="value">
   </div>
 </template>
 
