@@ -7,7 +7,6 @@
         type="number" 
         class="m-2 w-10 border-2 border-black" 
         v-model.number="min" 
-        :disabled="min >= max"
         @input="adjust"
         >
         <button 
@@ -63,11 +62,10 @@ export default {
 		},
     adjust(){
       if(this.count < this.min){
-        this.count = this.min;
+        this.min = this.count;
       }
       if(this.count > this.max){
-        this.count = this.max
-        this.min = this.max
+        this.max = this.count
       }
     }
 	},
